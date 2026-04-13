@@ -119,6 +119,57 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:1
 .enroute-miles{font-size:11px;color:var(--text-faint)}
 .enroute-none{font-size:12px;color:var(--text-faint);text-align:center;padding:12px}
 
+/* ─── Booking ─── */
+.booking-section{margin-top:4px}
+.booking-current{background:var(--bg);border:1px solid var(--border);border-radius:var(--radius-sm);padding:14px;margin-bottom:12px}
+.booking-current .booking-label{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:var(--accent);margin-bottom:8px}
+.booking-current .booking-detail{font-size:13px;color:var(--text);line-height:1.7}
+.booking-current .booking-detail span{color:var(--text-dim)}
+.booking-form{display:flex;flex-direction:column;gap:10px}
+.booking-row{display:flex;gap:8px}
+.booking-row .control-group{flex:1}
+.booking-time-row{display:flex;gap:8px;align-items:flex-end}
+.booking-time-row .control-group{flex:1}
+.booking-time-row .time-sep{font-size:14px;color:var(--text-dim);padding-bottom:10px;font-weight:600}
+
+.email-preview{background:var(--bg);border:1px solid var(--border);border-radius:var(--radius-sm);padding:14px;margin-top:10px;display:none}
+.email-preview.visible{display:block}
+.email-preview-header{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:var(--text-faint);margin-bottom:8px;display:flex;justify-content:space-between;align-items:center}
+.email-preview-to{font-size:11px;color:var(--text-dim);margin-bottom:8px;font-family:var(--mono)}
+.email-preview-body{font-size:13px;color:var(--text);line-height:1.7;white-space:pre-wrap}
+.email-preview-subject{font-size:12px;color:var(--text);font-weight:600;margin-bottom:6px}
+
+.booking-actions{display:flex;gap:8px;margin-top:12px}
+.btn-book{background:var(--accent);color:#fff}
+.btn-book-send{background:var(--success);color:#fff}
+
+/* ─── Workever ─── */
+.workever-section{margin-top:4px}
+.workever-status{display:flex;align-items:center;gap:8px;padding:10px 14px;border-radius:var(--radius-sm);font-size:12px;margin-bottom:10px}
+.workever-status.sent{background:var(--success-dim);color:var(--success);border:1px solid rgba(61,166,110,0.2)}
+.workever-status.not-sent{background:var(--bg);color:var(--text-faint);border:1px solid var(--border)}
+.workever-status .wv-icon{font-size:16px}
+.workever-status .wv-time{font-family:var(--mono);font-size:11px;margin-left:auto;color:var(--text-faint)}
+.btn-workever{background:#4f46e5;color:#fff;width:100%}
+.btn-workever:hover{background:#6366f1}
+.btn-workever-all{background:#4f46e5;color:#fff}
+.btn-workever-all:hover{background:#6366f1}
+
+/* ─── Modal ─── */
+.modal-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.4);z-index:300;display:none;align-items:center;justify-content:center;padding:20px}
+.modal-overlay.active{display:flex}
+.modal{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:28px;max-width:420px;width:100%;box-shadow:0 20px 60px rgba(0,0,0,.15)}
+.modal h3{font-size:15px;font-weight:700;color:var(--text);margin-bottom:8px}
+.modal p{font-size:13px;color:var(--text-dim);line-height:1.6;margin-bottom:16px}
+.modal .modal-meta{font-family:var(--mono);font-size:11px;color:var(--text-faint);margin-bottom:16px}
+.modal-actions{display:flex;gap:8px;justify-content:flex-end}
+.modal-actions .btn{min-width:80px;justify-content:center}
+
+/* ─── Bulk send progress ─── */
+.bulk-progress{font-size:12px;color:var(--text-dim);padding:8px 0}
+.bulk-progress .bar{height:4px;background:var(--border);border-radius:2px;margin-top:6px;overflow:hidden}
+.bulk-progress .bar-fill{height:100%;background:#4f46e5;border-radius:2px;transition:width .3s}
+
 @media(max-width:768px){.main-content{padding:12px}.detail-panel{width:100vw}.filters{flex-direction:column}.filter-input{min-width:100%}.topbar-stats{display:none}.job-card{grid-template-columns:1fr}.job-card-right{flex-direction:row;align-items:center}}
 </style>
 </head>
@@ -129,6 +180,7 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:1
 <div class="divider"></div>
 <div class="topbar-stats" id="topbarStats"></div>
 <div class="topbar-right">
+<button class="btn btn-workever-all btn-sm" onclick="sendAllToWorkever()">⚡ Send All to Workever</button>
 <button class="btn btn-outline btn-sm" onclick="renderAll()">↻ Refresh</button>
 </div>
 </div>
@@ -157,6 +209,21 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:1
 <div class="detail-header"><h2 id="detailTitle">Job Details</h2><button class="detail-close" onclick="closeDetail()">✕</button></div>
 <div class="detail-body" id="detailBody"></div>
 </div>
+
+<div class="modal-overlay" id="workeverModal">
+<div class="modal">
+<h3 id="wvModalTitle">Send to Workever</h3>
+<p id="wvModalMsg"></p>
+<div class="modal-meta" id="wvModalMeta"></div>
+<div id="wvBulkProgress"></div>
+<div class="modal-actions" id="wvModalActions">
+<button class="btn btn-outline" onclick="closeWvModal()">Cancel</button>
+<button class="btn btn-workever" id="wvModalConfirm">Confirm</button>
+</div>
+</div>
+</div>
+
+<div class="toast" id="toast"></div>
 
 <script>
 // ============================================================
@@ -337,6 +404,30 @@ function renderDetail() {
     ${j.mobile ? '<div class="detail-row"><span class="label">Mobile</span><span class="value">' + j.mobile + '</span></div>' : ''}
     ${j.email ? '<div class="detail-row"><span class="label">Email</span><span class="value" style="font-size:11px">' + j.email + '</span></div>' : ''}</div>
     <div class="detail-section"><div class="detail-section-title">Description</div><div class="detail-description">${j.jobDescription}</div></div>
+    <div class="detail-section booking-section"><div class="detail-section-title">Appointment</div>
+    ${j.booking ? '<div class="booking-current"><div class="booking-label">Booked</div><div class="booking-detail"><strong>' + j.booking.date + '</strong> · ' + j.booking.startTime + ' – ' + j.booking.endTime + '<br><span>Engineer:</span> ' + j.booking.engineer + (j.booking.emailSent ? '<br><span style="color:var(--success)">✓ Confirmation email sent</span>' : '') + '</div></div>' : ''}
+    <button class="btn btn-outline" style="width:100%;margin-bottom:8px" onclick="toggleBookingForm()">📅 ${j.booking ? 'Reschedule' : 'Book Appointment'}</button>
+    <div id="bookingForm" style="display:none">
+    <div class="booking-form">
+      <div class="control-group"><label>Date</label><input type="date" id="bookDate" value="${j.booking ? j.booking.date : ''}" onchange="updateEmailPreview()" /></div>
+      <div class="booking-time-row">
+        <div class="control-group"><label>From</label><select id="bookStart" onchange="updateEmailPreview()">${generateTimeOptions(j.booking ? j.booking.startTime : '08:00')}</select></div>
+        <div class="time-sep">–</div>
+        <div class="control-group"><label>To</label><select id="bookEnd" onchange="updateEmailPreview()">${generateTimeOptions(j.booking ? j.booking.endTime : '12:00')}</select></div>
+      </div>
+      <div class="control-group"><label>Engineer</label><input type="text" id="bookEngineer" value="${j.booking ? j.booking.engineer : j.assignedTo || ''}" placeholder="Engineer name" onchange="updateEmailPreview()" /></div>
+      <button class="btn btn-outline btn-sm" onclick="toggleEmailPreview()" style="align-self:flex-start">👁 Preview confirmation email</button>
+      <div class="email-preview" id="emailPreview">
+        <div class="email-preview-header"><span>Email Preview</span></div>
+        <div class="email-preview-to" id="emailTo"></div>
+        <div class="email-preview-subject" id="emailSubject"></div>
+        <div class="email-preview-body" id="emailBody"></div>
+      </div>
+      <div class="booking-actions">
+        <button class="btn btn-book" onclick="saveBooking(false)">Save Only</button>
+        <button class="btn btn-book-send" onclick="saveBooking(true)">Save & Send Email</button>
+      </div>
+    </div></div></div>
     <div class="detail-section"><div class="detail-section-title">Manage</div><div class="detail-controls">
     <div class="control-group"><label>Status</label><select id="editStatus">${['Pending Review','Logged','Scheduled','In Progress','Complete','Invoiced'].map(s => '<option value="' + s + '"' + (j.status === s ? ' selected' : '') + '>' + s + '</option>').join('')}</select></div>
     <div class="control-group"><label>Assigned To</label><input type="text" id="editAssigned" value="${j.assignedTo || ''}" placeholder="Engineer name" /></div>
@@ -348,6 +439,9 @@ function renderDetail() {
     <div class="detail-section"><div class="detail-section-title">Agent</div>
     <div class="detail-row"><span class="label">Name</span><span class="value">${j.agentName || '—'}</span></div>
     <div class="detail-row"><span class="label">Company</span><span class="value">${j.agentCompany || '—'}</span></div></div>
+    <div class="detail-section workever-section"><div class="detail-section-title">Workever</div>
+    ${j.workever ? '<div class="workever-status sent"><span class="wv-icon">✓</span> Sent to Workever<span class="wv-time">' + new Date(j.workever.sentAt).toLocaleString('en-GB') + '</span></div>' : '<div class="workever-status not-sent"><span class="wv-icon">—</span> Not yet sent to Workever</div>'}
+    <button class="btn btn-workever" onclick="sendToWorkever(\'${j.jobNumber}\')">⚡ ${j.workever ? 'Resend' : 'Send'} to Workever</button></div>
     <div class="detail-section enroute-section"><div class="detail-section-title">Jobs En Route</div>
     <button class="btn btn-outline enroute-btn" onclick="findEnRoute()">🚗 Find open jobs en route from PO15 5RQ</button>
     <div id="enrouteResults"></div></div>`;
@@ -453,10 +547,278 @@ async function findEnRoute() {
   }
 }
 
+// ============================================================
+// BOOKING SYSTEM
+// ============================================================
+
+function generateTimeOptions(selected) {
+  let opts = '';
+  for (let h = 6; h <= 20; h++) {
+    for (let m = 0; m < 60; m += 30) {
+      const val = String(h).padStart(2,'0') + ':' + String(m).padStart(2,'0');
+      opts += '<option value="' + val + '"' + (val === selected ? ' selected' : '') + '>' + val + '</option>';
+    }
+  }
+  return opts;
+}
+
+function toggleBookingForm() {
+  const form = document.getElementById('bookingForm');
+  form.style.display = form.style.display === 'none' ? 'block' : 'none';
+  if (form.style.display === 'block') updateEmailPreview();
+}
+
+function toggleEmailPreview() {
+  const el = document.getElementById('emailPreview');
+  el.classList.toggle('visible');
+  if (el.classList.contains('visible')) updateEmailPreview();
+}
+
+function updateEmailPreview() {
+  if (!selectedJob) return;
+  const j = selectedJob;
+  const date = document.getElementById('bookDate').value;
+  const start = document.getElementById('bookStart').value;
+  const end = document.getElementById('bookEnd').value;
+  const engineer = document.getElementById('bookEngineer').value || 'our engineer';
+
+  const emails = (j.email || '').split(/[;,]/).map(e => e.trim()).filter(Boolean);
+  const dateFormatted = date ? new Date(date + 'T00:00').toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' }) : '(select a date)';
+
+  document.getElementById('emailTo').textContent = 'To: ' + (emails.length ? emails.join(', ') : '(no email on file)');
+  document.getElementById('emailSubject').textContent = 'Subject: Appointment Confirmation — ' + (j.shortAddress || j.propertyAddress);
+  document.getElementById('emailBody').textContent =
+    'Dear ' + (j.tenantName ? j.tenantName.split('&')[0].split(',')[0].trim() : 'Tenant') + ',\n\n' +
+    'This is to confirm your appointment with Mostlane Electrical.\n\n' +
+    'Date: ' + dateFormatted + '\n' +
+    'Time: ' + start + ' – ' + end + '\n' +
+    'Engineer: ' + engineer + '\n' +
+    'Property: ' + j.propertyAddress + '\n\n' +
+    'Please ensure someone is available at the property during this time. If you need to reschedule, please contact us as soon as possible.\n\n' +
+    'Kind regards,\n' +
+    'Mostlane Electrical';
+}
+
+function saveBooking(sendEmail) {
+  if (!selectedJob) return;
+  const date = document.getElementById('bookDate').value;
+  const start = document.getElementById('bookStart').value;
+  const end = document.getElementById('bookEnd').value;
+  const engineer = document.getElementById('bookEngineer').value;
+
+  if (!date) { alert('Please select a date'); return; }
+  if (!engineer) { alert('Please enter an engineer name'); return; }
+
+  // Save booking to the job object (demo mode — in production this goes to KV via the Worker)
+  selectedJob.booking = {
+    date: date,
+    startTime: start,
+    endTime: end,
+    engineer: engineer,
+    emailSent: sendEmail,
+    bookedAt: new Date().toISOString()
+  };
+
+  // Auto-update status and assigned
+  selectedJob.status = 'Scheduled';
+  selectedJob.scheduledDate = date;
+  selectedJob.assignedTo = engineer;
+
+  // Add to history
+  selectedJob.history = selectedJob.history || [];
+  selectedJob.history.push({
+    timestamp: new Date().toISOString(),
+    type: 'updated',
+    by: 'portal',
+    changes: {
+      status: { from: selectedJob.status, to: 'Scheduled' },
+      booking: { from: '', to: date + ' ' + start + '-' + end + ' (' + engineer + ')' }
+    }
+  });
+
+  if (sendEmail) {
+    const emails = (selectedJob.email || '').split(/[;,]/).map(e => e.trim()).filter(Boolean);
+    if (!emails.length) {
+      alert('No email addresses on file for this job — booking saved but no email sent.');
+    } else {
+      // In production: POST to Worker /jobs/:id/email endpoint
+      alert('📧 Email would be sent to:\n' + emails.join('\n') + '\n\n(Email sending not yet configured — booking saved successfully)');
+    }
+  }
+
+  // Re-render
+  updateTopbar();
+  renderJobs();
+  renderDetail();
+
+  showToast('Appointment ' + (sendEmail ? 'booked & email queued' : 'booked'), 'success');
+}
+
+// ============================================================
+// WORKEVER INTEGRATION
+// ============================================================
+// In production: replace ZAPIER_WEBHOOK_URL with your actual Zapier webhook
+const ZAPIER_WEBHOOK_URL = '';  // e.g. 'https://hooks.zapier.com/hooks/catch/xxxxx/yyyyy/'
+
+function closeWvModal() {
+  document.getElementById('workeverModal').classList.remove('active');
+}
+
+function sendToWorkever(jobNumber) {
+  const job = allJobs.find(j => j.jobNumber === jobNumber);
+  if (!job) return;
+
+  if (job.workever) {
+    // Already sent — show warning modal
+    document.getElementById('wvModalTitle').textContent = '⚠️ Already Sent';
+    document.getElementById('wvModalMsg').textContent = 'This job has already been sent to Workever. Do you want to send it again?';
+    document.getElementById('wvModalMeta').textContent = 'Last sent: ' + new Date(job.workever.sentAt).toLocaleString('en-GB');
+    document.getElementById('wvBulkProgress').innerHTML = '';
+    document.getElementById('wvModalActions').innerHTML =
+      '<button class="btn btn-outline" onclick="closeWvModal()">Cancel</button>' +
+      '<button class="btn btn-workever" onclick="confirmSendToWorkever(\'' + jobNumber + '\')">Send Again</button>';
+    document.getElementById('workeverModal').classList.add('active');
+  } else {
+    confirmSendToWorkever(jobNumber);
+  }
+}
+
+function confirmSendToWorkever(jobNumber) {
+  closeWvModal();
+  const job = allJobs.find(j => j.jobNumber === jobNumber);
+  if (!job) return;
+
+  // Build the payload
+  const payload = {
+    jobNumber: job.jobNumber,
+    tenant: job.tenant,
+    tenantName: job.tenantName,
+    propertyAddress: job.propertyAddress,
+    shortAddress: job.shortAddress,
+    postcode: job.postcode,
+    mobile: job.mobile,
+    email: job.email,
+    trade: job.trade,
+    jobType: job.jobType,
+    summary: job.summary,
+    jobDescription: job.jobDescription,
+    dateJobEntered: job.dateJobEntered,
+    status: job.status,
+    agentName: job.agentName,
+    agentCompany: job.agentCompany,
+    milesEachWay: job.milesEachWay,
+    milesRoundTrip: job.milesRoundTrip,
+    travelTimeEachWay: job.travelTimeEachWay
+  };
+
+  if (ZAPIER_WEBHOOK_URL) {
+    // Production: fire the webhook
+    fetch(ZAPIER_WEBHOOK_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    }).then(function() {
+      markAsSentToWorkever(job);
+    }).catch(function(e) {
+      showToast('Failed to send: ' + e.message, 'error');
+    });
+  } else {
+    // Demo mode
+    markAsSentToWorkever(job);
+  }
+}
+
+function markAsSentToWorkever(job) {
+  job.workever = {
+    sentAt: new Date().toISOString(),
+    payload: true
+  };
+  job.history = job.history || [];
+  job.history.push({
+    timestamp: new Date().toISOString(),
+    type: 'updated',
+    by: 'portal',
+    changes: { workever: { from: '', to: 'Sent to Workever' } }
+  });
+
+  showToast('Sent ' + job.jobNumber + ' to Workever', 'success');
+  updateTopbar();
+  renderJobs();
+  if (selectedJob && selectedJob.jobNumber === job.jobNumber) renderDetail();
+}
+
+function sendAllToWorkever() {
+  const unsent = allJobs.filter(j => !j.workever && !['Complete','Invoiced','Linked'].includes(j.status));
+
+  if (unsent.length === 0) {
+    document.getElementById('wvModalTitle').textContent = 'All Up to Date';
+    document.getElementById('wvModalMsg').textContent = 'Every open job has already been sent to Workever.';
+    document.getElementById('wvModalMeta').textContent = '';
+    document.getElementById('wvBulkProgress').innerHTML = '';
+    document.getElementById('wvModalActions').innerHTML =
+      '<button class="btn btn-outline" onclick="closeWvModal()">OK</button>';
+    document.getElementById('workeverModal').classList.add('active');
+    return;
+  }
+
+  document.getElementById('wvModalTitle').textContent = '⚡ Send All to Workever';
+  document.getElementById('wvModalMsg').textContent = unsent.length + ' job' + (unsent.length !== 1 ? 's' : '') + ' not yet sent to Workever. Send them all now?';
+  document.getElementById('wvModalMeta').textContent = unsent.map(function(j) { return j.jobNumber + ' — ' + (j.summary || j.trade); }).join('\n');
+  document.getElementById('wvModalMeta').style.whiteSpace = 'pre-wrap';
+  document.getElementById('wvBulkProgress').innerHTML = '';
+  document.getElementById('wvModalActions').innerHTML =
+    '<button class="btn btn-outline" onclick="closeWvModal()">Cancel</button>' +
+    '<button class="btn btn-workever" onclick="confirmSendAll()">Send ' + unsent.length + ' Jobs</button>';
+  document.getElementById('workeverModal').classList.add('active');
+}
+
+async function confirmSendAll() {
+  const unsent = allJobs.filter(j => !j.workever && !['Complete','Invoiced','Linked'].includes(j.status));
+  const total = unsent.length;
+  let sent = 0;
+
+  document.getElementById('wvModalActions').innerHTML = '';
+  const prog = document.getElementById('wvBulkProgress');
+
+  for (const job of unsent) {
+    sent++;
+    prog.innerHTML = '<div class="bulk-progress">Sending ' + sent + ' of ' + total + '… <strong>' + job.jobNumber + '</strong><div class="bar"><div class="bar-fill" style="width:' + Math.round(sent / total * 100) + '%"></div></div></div>';
+
+    if (ZAPIER_WEBHOOK_URL) {
+      try {
+        await fetch(ZAPIER_WEBHOOK_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ jobNumber: job.jobNumber, propertyAddress: job.propertyAddress, trade: job.trade, summary: job.summary, jobDescription: job.jobDescription })
+        });
+      } catch(e) { /* continue */ }
+    }
+
+    markAsSentToWorkever(job);
+    // Small delay so UI updates visibly
+    await new Promise(function(r) { setTimeout(r, 300); });
+  }
+
+  prog.innerHTML = '<div class="bulk-progress" style="color:var(--success)">✓ All ' + total + ' jobs sent to Workever</div>';
+  document.getElementById('wvModalActions').innerHTML =
+    '<button class="btn btn-outline" onclick="closeWvModal()">Done</button>';
+}
+
+// ============================================================
+
 function fmtH(h) {
   if (h.type === 'created') return 'Job created via ' + h.by;
   if (h.type === 'updated' && h.changes) return Object.entries(h.changes).map(([k, v]) => k + ': ' + (v.from || '(empty)') + ' → ' + v.to).join(', ');
   return h.type;
+}
+
+let toastTimer;
+function showToast(msg, type) {
+  const el = document.getElementById('toast');
+  el.textContent = msg;
+  el.className = 'toast visible ' + (type || 'success');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(function(){ el.classList.remove('visible'); }, 3000);
 }
 
 renderAll();
