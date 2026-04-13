@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -22,107 +21,106 @@
 body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:100vh}
 
 .app{display:flex;flex-direction:column;min-height:100vh}
-.topbar{display:flex;align-items:center;gap:16px;padding:14px 24px;background:var(–surface);border-bottom:1px solid var(–border);position:sticky;top:0;z-index:100}
+.topbar{display:flex;align-items:center;gap:16px;padding:14px 24px;background:var(--surface);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100}
 .topbar .logo img{height:28px}
-.topbar .divider{width:1px;height:20px;background:var(–border)}
-.topbar-stats{display:flex;gap:14px;font-size:12px;color:var(–text-dim);font-family:var(–mono)}
-.topbar-stats strong{color:var(–text)}
+.topbar .divider{width:1px;height:20px;background:var(--border)}
+.topbar-stats{display:flex;gap:14px;font-size:12px;color:var(--text-dim);font-family:var(--mono)}
+.topbar-stats strong{color:var(--text)}
 .topbar-right{margin-left:auto;display:flex;gap:10px;align-items:center}
 .main-content{flex:1;padding:20px 24px;max-width:1400px;margin:0 auto;width:100%}
 
-.btn{padding:9px 16px;border:none;border-radius:var(–radius-sm);font-family:var(–font);font-size:12px;font-weight:600;cursor:pointer;transition:all .15s;display:inline-flex;align-items:center;gap:6px}
-.btn-primary{background:var(–accent);color:#fff}
-.btn-primary:hover{background:var(–accent-hover)}
+.btn{padding:9px 16px;border:none;border-radius:var(--radius-sm);font-family:var(--font);font-size:12px;font-weight:600;cursor:pointer;transition:all .15s;display:inline-flex;align-items:center;gap:6px}
+.btn-primary{background:var(--accent);color:#fff}
+.btn-primary:hover{background:var(--accent-hover)}
 .btn-sm{padding:6px 10px;font-size:11px}
-.btn-outline{background:transparent;color:var(–text-dim);border:1px solid var(–border)}
-.btn-outline:hover{border-color:var(–text-dim);color:var(–text)}
+.btn-outline{background:transparent;color:var(--text-dim);border:1px solid var(--border)}
+.btn-outline:hover{border-color:var(--text-dim);color:var(--text)}
 
-.tabs{display:flex;gap:4px;background:var(–surface);padding:4px;border-radius:var(–radius);margin-bottom:20px;width:fit-content}
-.tab{padding:8px 16px;border:none;background:transparent;color:var(–text-dim);font-family:var(–font);font-size:13px;font-weight:500;cursor:pointer;border-radius:var(–radius-sm);transition:all .15s;position:relative}
-.tab:hover{color:var(–text)}
-.tab.active{background:var(–accent);color:#fff}
-.tab .badge{position:absolute;top:-4px;right:-4px;background:var(–danger);color:#fff;font-size:10px;font-weight:700;padding:1px 5px;border-radius:10px;font-family:var(–mono)}
+.tabs{display:flex;gap:4px;background:var(--surface);padding:4px;border-radius:var(--radius);margin-bottom:20px;width:fit-content}
+.tab{padding:8px 16px;border:none;background:transparent;color:var(--text-dim);font-family:var(--font);font-size:13px;font-weight:500;cursor:pointer;border-radius:var(--radius-sm);transition:all .15s;position:relative}
+.tab:hover{color:var(--text)}
+.tab.active{background:var(--accent);color:#fff}
+.tab .badge{position:absolute;top:-4px;right:-4px;background:var(--danger);color:#fff;font-size:10px;font-weight:700;padding:1px 5px;border-radius:10px;font-family:var(--mono)}
 
 .filters{display:flex;gap:10px;margin-bottom:16px;flex-wrap:wrap;align-items:center}
-.filter-input{padding:8px 12px;background:var(–surface);border:1px solid var(–border);border-radius:var(–radius-sm);color:var(–text);font-family:var(–font);font-size:13px;outline:none;min-width:220px}
-.filter-input:focus{border-color:var(–accent)}
-.filter-select{padding:8px 12px;background:var(–surface);border:1px solid var(–border);border-radius:var(–radius-sm);color:var(–text);font-family:var(–font);font-size:13px;outline:none}
+.filter-input{padding:8px 12px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);font-family:var(--font);font-size:13px;outline:none;min-width:220px}
+.filter-input:focus{border-color:var(--accent)}
+.filter-select{padding:8px 12px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);font-family:var(--font);font-size:13px;outline:none}
 
 .job-list{display:flex;flex-direction:column;gap:8px}
-.job-card{background:var(–surface);box-shadow:0 1px 3px rgba(0,0,0,.06);border:1px solid var(–border);border-radius:var(–radius);padding:16px 20px;cursor:pointer;transition:all .15s;display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center}
-.job-card:hover{border-color:var(–border-light);background:var(–surface2)}
-.job-card.flagged{border-left:3px solid var(–warning)}
+.job-card{background:var(--surface);box-shadow:0 1px 3px rgba(0,0,0,.06);border:1px solid var(--border);border-radius:var(--radius);padding:16px 20px;cursor:pointer;transition:all .15s;display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center}
+.job-card:hover{border-color:var(--border-light);background:var(--surface2)}
+.job-card.flagged{border-left:3px solid var(--warning)}
 .job-card-main{display:flex;flex-direction:column;gap:4px;min-width:0}
 .job-card-top{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
-.job-number{font-family:var(–mono);font-size:13px;font-weight:600;color:var(–accent)}
+.job-number{font-family:var(--mono);font-size:13px;font-weight:600;color:var(--accent)}
 .job-type-badge{font-size:10px;font-weight:600;padding:2px 7px;border-radius:4px;text-transform:uppercase;letter-spacing:.5px}
-.job-type-badge.job{background:var(–info-dim);color:var(–info)}
-.job-type-badge.quote{background:var(–warning-dim);color:var(–warning)}
-.job-type-badge.order{background:var(–success-dim);color:var(–success)}
-.job-summary{font-size:14px;font-weight:500;color:var(–text)}
-.job-address{font-size:12px;color:var(–text-dim)}
-.job-meta{display:flex;gap:14px;font-size:11px;color:var(–text-faint);margin-top:2px}
-.job-flag{font-size:11px;color:var(–warning);margin-top:4px}
+.job-type-badge.job{background:var(--info-dim);color:var(--info)}
+.job-type-badge.quote{background:var(--warning-dim);color:var(--warning)}
+.job-type-badge.order{background:var(--success-dim);color:var(--success)}
+.job-summary{font-size:14px;font-weight:500;color:var(--text)}
+.job-address{font-size:12px;color:var(--text-dim)}
+.job-meta{display:flex;gap:14px;font-size:11px;color:var(--text-faint);margin-top:2px}
+.job-flag{font-size:11px;color:var(--warning);margin-top:4px}
 .job-card-right{display:flex;flex-direction:column;align-items:flex-end;gap:6px}
 
 .status-badge{font-size:11px;font-weight:600;padding:4px 10px;border-radius:20px;white-space:nowrap}
-.status-badge.pending-review{background:var(–warning-dim);color:var(–warning)}
-.status-badge.logged{background:var(–info-dim);color:var(–info)}
+.status-badge.pending-review{background:var(--warning-dim);color:var(--warning)}
+.status-badge.logged{background:var(--info-dim);color:var(--info)}
 .status-badge.scheduled{background:rgba(139,92,246,.08);color:#8b5cf6}
-.status-badge.in-progress{background:var(–accent-dim);color:var(–accent)}
-.status-badge.complete{background:var(–success-dim);color:var(–success)}
+.status-badge.in-progress{background:var(--accent-dim);color:var(--accent)}
+.status-badge.complete{background:var(--success-dim);color:var(--success)}
 .status-badge.invoiced{background:rgba(107,114,128,.08);color:#9ca3af}
-.trade-badge{font-size:10px;color:var(–text-dim);font-family:var(–mono)}
+.trade-badge{font-size:10px;color:var(--text-dim);font-family:var(--mono)}
 
 .detail-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.25);z-index:200;display:none}
 .detail-overlay.active{display:block}
-.detail-panel{position:fixed;top:0;right:0;bottom:0;width:560px;max-width:100vw;background:var(–surface);border-left:1px solid var(–border);z-index:201;overflow-y:auto;transform:translateX(100%);transition:transform .25s ease}
+.detail-panel{position:fixed;top:0;right:0;bottom:0;width:560px;max-width:100vw;background:var(--surface);border-left:1px solid var(--border);z-index:201;overflow-y:auto;transform:translateX(100%);transition:transform .25s ease}
 .detail-panel.active{transform:translateX(0)}
-.detail-header{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-bottom:1px solid var(–border);position:sticky;top:0;background:var(–surface);z-index:10}
-.detail-header h2{font-size:16px;font-weight:700;color:var(–accent)}
-.detail-close{background:none;border:none;color:var(–text-dim);font-size:20px;cursor:pointer;padding:4px 8px}
-.detail-close:hover{color:var(–text)}
+.detail-header{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-bottom:1px solid var(--border);position:sticky;top:0;background:var(--surface);z-index:10}
+.detail-header h2{font-size:16px;font-weight:700;color:var(--accent)}
+.detail-close{background:none;border:none;color:var(--text-dim);font-size:20px;cursor:pointer;padding:4px 8px}
+.detail-close:hover{color:var(--text)}
 .detail-body{padding:20px}
 .detail-section{margin-bottom:20px}
-.detail-section-title{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:1.2px;color:var(–text-faint);margin-bottom:10px}
-.detail-row{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(–border);font-size:13px}
-.detail-row .label{color:var(–text-dim);min-width:120px}
-.detail-row .value{color:var(–text);text-align:right;word-break:break-word;max-width:320px}
-.detail-description{font-size:13px;line-height:1.6;color:var(–text);background:var(–bg);padding:12px;border-radius:var(–radius-sm);margin-top:8px}
+.detail-section-title{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:1.2px;color:var(--text-faint);margin-bottom:10px}
+.detail-row{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--border);font-size:13px}
+.detail-row .label{color:var(--text-dim);min-width:120px}
+.detail-row .value{color:var(--text);text-align:right;word-break:break-word;max-width:320px}
+.detail-description{font-size:13px;line-height:1.6;color:var(--text);background:var(--bg);padding:12px;border-radius:var(--radius-sm);margin-top:8px}
 .detail-controls{display:flex;flex-direction:column;gap:12px}
 .control-group{display:flex;flex-direction:column;gap:4px}
-.control-group label{font-size:11px;color:var(–text-dim);font-weight:500}
-.control-group select,.control-group input,.control-group textarea{padding:8px 12px;background:var(–bg);border:1px solid var(–border);border-radius:var(–radius-sm);color:var(–text);font-family:var(–font);font-size:13px;outline:none;resize:vertical}
+.control-group label{font-size:11px;color:var(--text-dim);font-weight:500}
+.control-group select,.control-group input,.control-group textarea{padding:8px 12px;background:var(--bg);border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);font-family:var(--font);font-size:13px;outline:none;resize:vertical}
 .control-group textarea{min-height:80px}
 .detail-actions{display:flex;gap:8px;margin-top:12px}
-.history-item{display:flex;gap:10px;padding:8px 0;border-bottom:1px solid var(–border);font-size:12px}
-.history-dot{width:8px;height:8px;border-radius:50%;background:var(–accent);margin-top:4px;flex-shrink:0}
+.history-item{display:flex;gap:10px;padding:8px 0;border-bottom:1px solid var(--border);font-size:12px}
+.history-dot{width:8px;height:8px;border-radius:50%;background:var(--accent);margin-top:4px;flex-shrink:0}
 .history-content{flex:1}
-.history-time{color:var(–text-faint);font-family:var(–mono);font-size:11px}
-.history-desc{color:var(–text-dim);margin-top:2px}
-.empty-state{text-align:center;padding:60px 20px;color:var(–text-dim)}
+.history-time{color:var(--text-faint);font-family:var(--mono);font-size:11px}
+.history-desc{color:var(--text-dim);margin-top:2px}
+.empty-state{text-align:center;padding:60px 20px;color:var(--text-dim)}
 .empty-state .icon{font-size:40px;margin-bottom:12px;opacity:.4}
 
 .enroute-section{margin-top:4px}
 .enroute-btn{width:100%;margin-bottom:12px}
-.enroute-loading{font-size:12px;color:var(–text-dim);padding:12px;text-align:center}
+.enroute-loading{font-size:12px;color:var(--text-dim);padding:12px;text-align:center}
 .enroute-list{display:flex;flex-direction:column;gap:6px}
-.enroute-card{background:var(–bg);border:1px solid var(–border);border-radius:var(–radius-sm);padding:12px;display:grid;grid-template-columns:1fr auto;gap:8px;align-items:center}
-.enroute-card:hover{border-color:var(–border-light)}
-.enroute-job{font-family:var(–mono);font-size:12px;font-weight:600;color:var(–accent)}
-.enroute-addr{font-size:12px;color:var(–text-dim)}
-.enroute-summary{font-size:12px;color:var(–text);margin-top:2px}
+.enroute-card{background:var(--bg);border:1px solid var(--border);border-radius:var(--radius-sm);padding:12px;display:grid;grid-template-columns:1fr auto;gap:8px;align-items:center}
+.enroute-card:hover{border-color:var(--border-light)}
+.enroute-job{font-family:var(--mono);font-size:12px;font-weight:600;color:var(--accent)}
+.enroute-addr{font-size:12px;color:var(--text-dim)}
+.enroute-summary{font-size:12px;color:var(--text);margin-top:2px}
 .enroute-detour{text-align:right}
-.enroute-time{font-family:var(–mono);font-size:13px;font-weight:600}
-.enroute-time.good{color:var(–success)}
-.enroute-time.ok{color:var(–warning)}
-.enroute-time.bad{color:var(–danger)}
-.enroute-miles{font-size:11px;color:var(–text-faint)}
-.enroute-none{font-size:12px;color:var(–text-faint);text-align:center;padding:12px}
+.enroute-time{font-family:var(--mono);font-size:13px;font-weight:600}
+.enroute-time.good{color:var(--success)}
+.enroute-time.ok{color:var(--warning)}
+.enroute-time.bad{color:var(--danger)}
+.enroute-miles{font-size:11px;color:var(--text-faint)}
+.enroute-none{font-size:12px;color:var(--text-faint);text-align:center;padding:12px}
 
 @media(max-width:768px){.main-content{padding:12px}.detail-panel{width:100vw}.filters{flex-direction:column}.filter-input{min-width:100%}.topbar-stats{display:none}.job-card{grid-template-columns:1fr}.job-card-right{flex-direction:row;align-items:center}}
 </style>
-
 </head>
 <body>
 <div class="app">
@@ -344,128 +342,121 @@ function renderDetail() {
     <div class="control-group"><label>Assigned To</label><input type="text" id="editAssigned" value="${j.assignedTo || ''}" placeholder="Engineer name" /></div>
     <div class="control-group"><label>Scheduled Date</label><input type="date" id="editScheduled" value="${j.scheduledDate || ''}" /></div>
     <div class="control-group"><label>Internal Notes</label><textarea id="editNotes" placeholder="Add notes…">${j.internalNotes || ''}</textarea></div>
-
-```
-${j.flags && j.flags.some(f => f.startsWith('postcode_match')) ? '<div class="control-group"><label>⚠️ Link to Existing Job</label><input type="text" id="editLink" placeholder="Enter job number to link to" /><button class="btn btn-outline btn-sm" style="margin-top:4px">Link Job</button></div>' : ''}
-<div class="detail-actions"><button class="btn btn-primary" onclick="alert(\'Connected to demo — save disabled\')">Save Changes</button></div></div></div>
-${j.history && j.history.length ? '<div class="detail-section"><div class="detail-section-title">History</div>' + j.history.slice().reverse().map(h => '<div class="history-item"><div class="history-dot"></div><div class="history-content"><div class="history-time">' + new Date(h.timestamp).toLocaleString('en-GB') + '</div><div class="history-desc">' + fmtH(h) + '</div></div></div>').join('') + '</div>' : ''}
-<div class="detail-section"><div class="detail-section-title">Agent</div>
-<div class="detail-row"><span class="label">Name</span><span class="value">${j.agentName || '—'}</span></div>
-<div class="detail-row"><span class="label">Company</span><span class="value">${j.agentCompany || '—'}</span></div></div>
-<div class="detail-section enroute-section"><div class="detail-section-title">Jobs En Route</div>
-<button class="btn btn-outline enroute-btn" onclick="findEnRoute()">🚗 Find open jobs en route from PO15 5RQ</button>
-<div id="enrouteResults"></div></div>`;
-```
-
+    ${j.flags && j.flags.some(f => f.startsWith('postcode_match')) ? '<div class="control-group"><label>⚠️ Link to Existing Job</label><input type="text" id="editLink" placeholder="Enter job number to link to" /><button class="btn btn-outline btn-sm" style="margin-top:4px">Link Job</button></div>' : ''}
+    <div class="detail-actions"><button class="btn btn-primary" onclick="alert(\'Connected to demo — save disabled\')">Save Changes</button></div></div></div>
+    ${j.history && j.history.length ? '<div class="detail-section"><div class="detail-section-title">History</div>' + j.history.slice().reverse().map(h => '<div class="history-item"><div class="history-dot"></div><div class="history-content"><div class="history-time">' + new Date(h.timestamp).toLocaleString('en-GB') + '</div><div class="history-desc">' + fmtH(h) + '</div></div></div>').join('') + '</div>' : ''}
+    <div class="detail-section"><div class="detail-section-title">Agent</div>
+    <div class="detail-row"><span class="label">Name</span><span class="value">${j.agentName || '—'}</span></div>
+    <div class="detail-row"><span class="label">Company</span><span class="value">${j.agentCompany || '—'}</span></div></div>
+    <div class="detail-section enroute-section"><div class="detail-section-title">Jobs En Route</div>
+    <button class="btn btn-outline enroute-btn" onclick="findEnRoute()">🚗 Find open jobs en route from PO15 5RQ</button>
+    <div id="enrouteResults"></div></div>`;
 }
 
-const GKEY = ‘AIzaSyANo2Q7OehYzHTTgMTxRr5ISamf5IradcM’;
-const ORIGIN_PC = ‘PO15 5RQ’;
+const GKEY = 'AIzaSyANo2Q7OehYzHTTgMTxRr5ISamf5IradcM';
+const ORIGIN_PC = 'PO15 5RQ';
 
 function distanceMatrix(origins, destinations) {
-return new Promise((resolve, reject) => {
-if (gmFailed) { reject(new Error(‘Google Maps blocked by this environment. Download the HTML file and open it directly in your browser to use this feature.’)); return; }
-if (!gmLoaded || typeof google === ‘undefined’ || !google.maps) { reject(new Error(‘Google Maps loading — wait a few seconds and try again’)); return; }
-new google.maps.DistanceMatrixService().getDistanceMatrix({
-origins, destinations,
-travelMode: google.maps.TravelMode.DRIVING,
-drivingOptions: { departureTime: new Date(), trafficModel: google.maps.TrafficModel.BEST_GUESS }
-}, (resp, status) => {
-if (status === ‘OK’) resolve(resp); else reject(new Error(’Distance Matrix: ’ + status));
-});
-});
+  return new Promise((resolve, reject) => {
+    if (gmFailed) { reject(new Error('Google Maps blocked by this environment. Download the HTML file and open it directly in your browser to use this feature.')); return; }
+    if (!gmLoaded || typeof google === 'undefined' || !google.maps) { reject(new Error('Google Maps loading — wait a few seconds and try again')); return; }
+    new google.maps.DistanceMatrixService().getDistanceMatrix({
+      origins, destinations,
+      travelMode: google.maps.TravelMode.DRIVING,
+      drivingOptions: { departureTime: new Date(), trafficModel: google.maps.TrafficModel.BEST_GUESS }
+    }, (resp, status) => {
+      if (status === 'OK') resolve(resp); else reject(new Error('Distance Matrix: ' + status));
+    });
+  });
 }
 
 async function findEnRoute() {
-if (!selectedJob) return;
-const resultsDiv = document.getElementById(‘enrouteResults’);
-resultsDiv.innerHTML = ‘<div class="enroute-loading">Calculating live driving times…</div>’;
+  if (!selectedJob) return;
+  const resultsDiv = document.getElementById('enrouteResults');
+  resultsDiv.innerHTML = '<div class="enroute-loading">Calculating live driving times…</div>';
 
-const thisJob = selectedJob;
-const otherOpen = allJobs.filter(j =>
-j.jobNumber !== thisJob.jobNumber && j.postcode &&
-![‘Complete’,‘Invoiced’,‘Linked’].includes(j.status)
-);
+  const thisJob = selectedJob;
+  const otherOpen = allJobs.filter(j =>
+    j.jobNumber !== thisJob.jobNumber && j.postcode &&
+    !['Complete','Invoiced','Linked'].includes(j.status)
+  );
 
-if (!otherOpen.length) {
-resultsDiv.innerHTML = ‘<div class="enroute-none">No other open jobs to compare</div>’;
-return;
-}
+  if (!otherOpen.length) {
+    resultsDiv.innerHTML = '<div class="enroute-none">No other open jobs to compare</div>';
+    return;
+  }
 
-try {
-// Direct time: origin → this job
-const directResp = await distanceMatrix([ORIGIN_PC], [thisJob.postcode]);
-const directEl = directResp.rows[0].elements[0];
-if (directEl.status !== ‘OK’) { resultsDiv.innerHTML = ‘<div class="enroute-none">Could not calculate direct route</div>’; return; }
-const directSec = directEl.duration_in_traffic ? directEl.duration_in_traffic.value : directEl.duration.value;
+  try {
+    // Direct time: origin → this job
+    const directResp = await distanceMatrix([ORIGIN_PC], [thisJob.postcode]);
+    const directEl = directResp.rows[0].elements[0];
+    if (directEl.status !== 'OK') { resultsDiv.innerHTML = '<div class="enroute-none">Could not calculate direct route</div>'; return; }
+    const directSec = directEl.duration_in_traffic ? directEl.duration_in_traffic.value : directEl.duration.value;
 
-```
-const pcs = [...new Set(otherOpen.map(j => j.postcode))];
+    const pcs = [...new Set(otherOpen.map(j => j.postcode))];
 
-// Origin → each other postcode
-const fromOrigin = {};
-for (let i = 0; i < pcs.length; i += 25) {
-  const batch = pcs.slice(i, i + 25);
-  const resp = await distanceMatrix([ORIGIN_PC], batch);
-  resp.rows[0].elements.forEach((el, idx) => {
-    if (el.status === 'OK') fromOrigin[batch[idx]] = {
-      sec: el.duration_in_traffic ? el.duration_in_traffic.value : el.duration.value,
-      m: el.distance.value
-    };
-  });
-}
+    // Origin → each other postcode
+    const fromOrigin = {};
+    for (let i = 0; i < pcs.length; i += 25) {
+      const batch = pcs.slice(i, i + 25);
+      const resp = await distanceMatrix([ORIGIN_PC], batch);
+      resp.rows[0].elements.forEach((el, idx) => {
+        if (el.status === 'OK') fromOrigin[batch[idx]] = {
+          sec: el.duration_in_traffic ? el.duration_in_traffic.value : el.duration.value,
+          m: el.distance.value
+        };
+      });
+    }
 
-// Each other postcode → this job
-const toTarget = {};
-for (let i = 0; i < pcs.length; i += 25) {
-  const batch = pcs.slice(i, i + 25);
-  const resp = await distanceMatrix(batch, [thisJob.postcode]);
-  resp.rows.forEach((row, idx) => {
-    const el = row.elements[0];
-    if (el && el.status === 'OK') toTarget[batch[idx]] = {
-      sec: el.duration_in_traffic ? el.duration_in_traffic.value : el.duration.value,
-      m: el.distance.value
-    };
-  });
-}
+    // Each other postcode → this job
+    const toTarget = {};
+    for (let i = 0; i < pcs.length; i += 25) {
+      const batch = pcs.slice(i, i + 25);
+      const resp = await distanceMatrix(batch, [thisJob.postcode]);
+      resp.rows.forEach((row, idx) => {
+        const el = row.elements[0];
+        if (el && el.status === 'OK') toTarget[batch[idx]] = {
+          sec: el.duration_in_traffic ? el.duration_in_traffic.value : el.duration.value,
+          m: el.distance.value
+        };
+      });
+    }
 
-const results = [];
-for (const job of otherOpen) {
-  const a = fromOrigin[job.postcode], b = toTarget[job.postcode];
-  if (!a || !b) continue;
-  const detourSec = (a.sec + b.sec) - directSec;
-  const detourMins = Math.round(detourSec / 60);
-  const detourMiles = ((a.m + b.m) / 1609.344 - parseFloat(thisJob.milesEachWay || 0)).toFixed(1);
-  results.push({ job, detourMins, detourMiles });
-}
-results.sort((a, b) => a.detourMins - b.detourMins);
+    const results = [];
+    for (const job of otherOpen) {
+      const a = fromOrigin[job.postcode], b = toTarget[job.postcode];
+      if (!a || !b) continue;
+      const detourSec = (a.sec + b.sec) - directSec;
+      const detourMins = Math.round(detourSec / 60);
+      const detourMiles = ((a.m + b.m) / 1609.344 - parseFloat(thisJob.milesEachWay || 0)).toFixed(1);
+      results.push({ job, detourMins, detourMiles });
+    }
+    results.sort((a, b) => a.detourMins - b.detourMins);
 
-if (!results.length) { resultsDiv.innerHTML = '<div class="enroute-none">Could not calculate routes</div>'; return; }
+    if (!results.length) { resultsDiv.innerHTML = '<div class="enroute-none">Could not calculate routes</div>'; return; }
 
-resultsDiv.innerHTML = '<div class="enroute-list">' + results.map(r => {
-  const tc = r.detourMins <= 10 ? 'good' : r.detourMins <= 25 ? 'ok' : 'bad';
-  const px = r.detourMins <= 0 ? '' : '+';
-  return '<div class="enroute-card"><div>' +
-    '<div class="enroute-job">' + r.job.jobNumber + '</div>' +
-    '<div class="enroute-addr">' + (r.job.shortAddress || r.job.propertyAddress) + ' · ' + r.job.postcode + '</div>' +
-    '<div class="enroute-summary">' + (r.job.summary || r.job.trade) +
-    ' · <span class="status-badge ' + r.job.status.toLowerCase().replace(/\s+/g,'-') + '" style="font-size:10px;padding:2px 6px">' + r.job.status + '</span></div>' +
-    '</div><div class="enroute-detour">' +
-    '<div class="enroute-time ' + tc + '">' + px + r.detourMins + ' min</div>' +
-    '<div class="enroute-miles">' + px + r.detourMiles + ' mi detour</div>' +
-    '</div></div>';
-}).join('') + '</div>';
-```
-
-} catch (e) {
-resultsDiv.innerHTML = ’<div class="enroute-none">Error: ’ + e.message + ‘</div>’;
-}
+    resultsDiv.innerHTML = '<div class="enroute-list">' + results.map(r => {
+      const tc = r.detourMins <= 10 ? 'good' : r.detourMins <= 25 ? 'ok' : 'bad';
+      const px = r.detourMins <= 0 ? '' : '+';
+      return '<div class="enroute-card"><div>' +
+        '<div class="enroute-job">' + r.job.jobNumber + '</div>' +
+        '<div class="enroute-addr">' + (r.job.shortAddress || r.job.propertyAddress) + ' · ' + r.job.postcode + '</div>' +
+        '<div class="enroute-summary">' + (r.job.summary || r.job.trade) +
+        ' · <span class="status-badge ' + r.job.status.toLowerCase().replace(/\s+/g,'-') + '" style="font-size:10px;padding:2px 6px">' + r.job.status + '</span></div>' +
+        '</div><div class="enroute-detour">' +
+        '<div class="enroute-time ' + tc + '">' + px + r.detourMins + ' min</div>' +
+        '<div class="enroute-miles">' + px + r.detourMiles + ' mi detour</div>' +
+        '</div></div>';
+    }).join('') + '</div>';
+  } catch (e) {
+    resultsDiv.innerHTML = '<div class="enroute-none">Error: ' + e.message + '</div>';
+  }
 }
 
 function fmtH(h) {
-if (h.type === ‘created’) return ’Job created via ’ + h.by;
-if (h.type === ‘updated’ && h.changes) return Object.entries(h.changes).map(([k, v]) => k + ‘: ’ + (v.from || ‘(empty)’) + ’ → ’ + v.to).join(’, ’);
-return h.type;
+  if (h.type === 'created') return 'Job created via ' + h.by;
+  if (h.type === 'updated' && h.changes) return Object.entries(h.changes).map(([k, v]) => k + ': ' + (v.from || '(empty)') + ' → ' + v.to).join(', ');
+  return h.type;
 }
 
 renderAll();
@@ -476,13 +467,12 @@ let gmFailed = false;
 function gmCallback() { gmLoaded = true; }
 
 (function loadGM() {
-try {
-const s = document.createElement(‘script’);
-s.src = ‘https://maps.googleapis.com/maps/api/js?key=AIzaSyANo2Q7OehYzHTTgMTxRr5ISamf5IradcM&callback=gmCallback’;
-s.onerror = function() { gmFailed = true; };
-document.head.appendChild(s);
-} catch(e) { gmFailed = true; }
+  try {
+    const s = document.createElement('script');
+    s.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyANo2Q7OehYzHTTgMTxRr5ISamf5IradcM&callback=gmCallback';
+    s.onerror = function() { gmFailed = true; };
+    document.head.appendChild(s);
+  } catch(e) { gmFailed = true; }
 })();
 </script>
-
 </body></html>
